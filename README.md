@@ -3,4 +3,4 @@ username : rudra
 password = 123
 
 
-technologies - Django, Bootstrap 5
+technologies - Django, HTML, Bootstrap 5
