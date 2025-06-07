@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script>
+    function cancel(url) {
+        // Show alert
+        alert('Canceled successfully');
+        
+        // Redirect to the cancellation URL
+        window.location.href = url;
+    }
+</script>
+
+<h1>Here are your Orders</h1>
+
+{% if orders %}
+    {% for order in orders %}
+    <div class="container my-5">
+        <div class="card">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ order.fk.carphoto.url }}" class="img-fluid rounded-start" alt="Card Image">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ order.fk.carname }}</h5>
+                        <div class="card-text">
+                            Your name: {{ order.fullname }}<br>
+                            Hours you want to travel: {{ order.hour }}<br>
+                            Total price: {% widthratio order.hour 1 order.fk.price %}<br>
+                            Phone number: {{ order.phone }}<br>
+                            City: {{ order.city }}<br>
+                            <b style="color:green">
+                                <p>{{ order.code }}</b> <u>Show this code to the driver at the car</u></p>
+                            <b>
+                            Travel date: {{ order.travel_date }}<br>
+                            Booking date: {{ order.booked_date }} (This is the date when you confirmed your rent)<br>
+                            </b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 style="margin-left:20px;margin-top:1px">
+                {% if order.travel_date < today %}
+                    <p>Travel status: <span style="color:red">Travel completed</span></p>
+                {% else %}
+                    <p>Travel status: <span style="color:green">Yet to travel</span></p>
+                    <button type="button" class='btn btn-outline-primary' onclick="cancel('{% url 'delete' order.id %}')">CANCEL</button>
+                    <p>You can cancel the booking by clicking it</p>
+                {% endif %}
+            </h4>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="container" style="margin-top: 150px;margin-bottom: 390px">
+        <center>
+            <h4 style="color:gray">You haven't rented any cars yet.</h4>
+        </center>
+    </div>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="d-flex">
+        <div class="p-2 flex-fill w-50">
+            <h1 style="padding:30px">You can Rent your favourite <span style='color:blue'>car..</span></h1>
+            <p class='mt-4 ms-5' style='font-size:18px'>A car rental, hire car or car hire agency is a company that rents automobiles for short periods of time to the public, generally ranging 
+               from a few hours to a few weeks.
+            </p>
+            <br>
+            <br>
+            <p class='mt-1 ms-3' style='font-size:20px'>Browse your favourite car for rent:
+                <a class='btn btn-outline-danger' href="{%url 'rent'%}">Rent Now</a>
+            </p>
+        </div>
+        <div class="p-2 flex-fill w-50">
+            {% load static %}
+            <img src="{% static 'images/bb.jpg' %}" alt="" width="100%" class="d-inline-block align-text-top"/>
+        </div>
+    </div>
+    <br>
+    <h2>Our best price rents</h2>
+    <br>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for cardata in cars%}
+        <div class="col">
+            
+            <div class="card">
+            <h1 class="card-title fw-bold">{{ cardata.carname }}</h1>
+            <img class="card-img-top" src="{{ cardata.carphoto.url }}" style="height:200px"/>
+                <div class="card-body">
+                    <p class="card-text">rent price : {{ cardata.price }}rs per hour </p>
+                    <a href="{% url 'detail' cardata.id %}"class="btn btn-outline-primary">rent</a>
+                </div>
+            </div>
+            <br>
+        </div>
+        {% endfor %}
+    </div>
+    <br>
+
+</div>
+
+{% endblock content %}

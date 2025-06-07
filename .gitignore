@@ -1,0 +1,22 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+
+# Environment
+.env
+
+# VS Code and OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Migrations (optional to ignore)
+**/migrations/*.py
+!**/migrations/__init__.py

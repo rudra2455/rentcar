@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script>
+    function book() {
+        alert('Booked successfully');
+    }
+</script>
+
+<div class="container">
+    <h1><b>{{ cardetails.carname }}</b></h1>
+    <center>
+        <img src="{{ cardetails.carphoto.url }}" height="500px" alt="carphoto" style="border-radius: 5%">
+    </center>
+    <br>
+    <h3>Car's brand is {{ cardetails.carbrand }}.</h3>
+    <br>
+    <h4>{{ cardetails.cardescription }}</h4>
+    <br>
+    
+    <ul>
+        <li><h5>Car can run on {{ cardetails.fuel }}.</h5></li>
+        <li><h5>Car's mileage is {{ cardetails.mileage }}.</h5></li>
+        <li><h5>Car's average is {{ cardetails.average }}.</h5></li>
+        <li><h5>Car can carry {{ cardetails.passangercapacity }} people.</h5></li>
+    </ul>
+    <br>
+
+    <h3>Price is according to the hours.</h3>
+    <br>
+    <h4>Price is {{ cardetails.price }} rs per hour</h4>
+    <br>
+    
+    <form action="" method="GET" onsubmit="book();">
+        <div class="input-group">
+            <center>
+                <label for="hours" style="margin:15px"><h4>Enter Hours: </h4>
+                <input type="text" class="form-control rounded" placeholder="Enter the Hours" name="hours" required/></label>
+
+                <label for="city" style="margin:15px"><h4>Enter your city: </h4>
+                <input type="text" class="form-control rounded" placeholder="Enter your city" name="city" required/></label>
+
+                <label for="date" style="margin:15px"><h4>Enter Date: </h4>
+                <input type="date" class="form-control rounded" placeholder="Enter Date" name="date" min="" required/></label>
+
+                <label for="name" style="margin:15px"><h4>Enter your name: </h4>
+                <input type="text" class="form-control rounded" placeholder="Enter your name" name="name" required/></label>
+
+                <label for="phonenumber" style="margin:15px"><h4>Enter phone-number: </h4>
+                <input type="text" class="form-control rounded" placeholder="Enter phone-number" name="phonenumber" required/></label>
+            </center>
+        </div>
+        
+        <center>
+            <br>
+            <h3>If you want to confirm the booking, click on <b><u>confirm</u></b></h3>
+            <br>
+            <button type="submit" class="btn btn-outline-primary">CONFIRM</button>
+        </center>
+    </form>
+    
+</div>
+
+{% endblock content %}
